@@ -1,0 +1,11 @@
+#ifndef CONFIG
+#define CONFIG
+
+#define BINARY_NAME "@TARGET_BINARY@"
+
+#define ON 1
+#define OFF 0
+
+#define ECHO_BUILD @ECHO_BUILD@
+
+#endif
