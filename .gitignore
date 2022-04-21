@@ -1,0 +1,6 @@
+*.save
+*.so
+a.out
+*.out
+
+build/
