@@ -3,7 +3,7 @@ Applet is a sub functionality which is built into minibox executable
 if enabled while configuring the project. For example "echo" is an
 applet likewise "pwd", "cd" are also applets.
 
-# Create your own applet for MiniBox
+## Create your own applet for MiniBox
 Here your applet's name is assumed as XXXX. 
 1. First you need to create XXXX.cpp source file in src folder. 
 For example, echo applet's source file is located in src/coreutils
