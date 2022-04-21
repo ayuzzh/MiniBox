@@ -1,61 +1,37 @@
 #include <iostream>
 #include <string>
 
-#include <config.h>
 #include <applets.hpp>
-
-
-void usage()
-{
-	std::cout << "Usage:\n"
-BINARY_NAME " --version\n"
-BINARY_NAME " --help\n"
-BINARY_NAME " --list\n"
-BINARY_NAME " command [[arguments]...]\n"
-"\n\n"
-
-"MiniBox is tool which can be used as an alternative for Busybox\n"
-"and Toybox." << std::endl;
-
-	exit(0);
-}
+#include <config.h>
+#include <headers.hpp>
 
 int main(int argc, char *argv[])
 {
-	char *_argv[argc - 1];
-	char *basename_ = basename(argv[0]);
-	if (argc > 2)
-	{
-		for (int i = 0; i < argc; i++)
-		{
-			_argv[i] = argv[i + 1];
-		}
-	}
-	if (strcmp(basename_, BINARY_NAME) == 0)
+    char *_basename = basename(argv[0]);
+	if (strcmp(_basename, BINARY_NAME) == 0)
 	{
 		if (argc == 1)
 		{
 			usage();
 		}
-
-		if (argc == 2 && (strcmp(argv[1], "--help") == 0))
+		
+		else if (argc == 2 && (strcmp(argv[1], "--help") == 0))
 		{
 			usage();
 		}
-#if ECHO_BUILD == ON
-		else if (argc >= 2 && (strcmp(argv[1], "echo") == 0))
+		
+		else if (argc == 2 && (strcmp(argv[1], "--version") == 0))
 		{
-			echo_main(argc-1, _argv);
+			version();
 		}
-#endif
-
-		else if (argc >= 2)
+		
+		else
 		{
-			std::cout << "Unknown command: " << argv[1] << std::endl;
+			applets_call(argc, argv);
 		}
 	}
 	else
 	{
-		std::cout << "Unknown Command " << argv[0] << std::endl;
+		applets_as_main(argc, argv);
 	}
 }
