@@ -10,13 +10,21 @@ set(ECHO_BUILD ${ECHO})
 
 configure_file(MiniBoxConfig.h.in config.h)
 
+# Echo command
+if(ECHO STREQUAL ON)
+	set(COREUTILS_ECHO_SOURCE src/coreutils/echo.cpp)
+else()
+	set(COREUTILS_ECHO_SOURCE "")
+endif()
+
+
 add_executable(
 	${TARGET_BINARY}
 
 	src/MiniBox.cpp
 	src/applets.cpp
 
-	src/coreutils/echo.cpp
+	${COREUTILS_ECHO_SOURCE}
 )
 
 target_include_directories(
