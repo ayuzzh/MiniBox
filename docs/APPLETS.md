@@ -33,7 +33,7 @@ int XXXX_main(int argc, char* argv[])
 #endif
 
 ```
-3. Include `#define XXXX_BUILD @XXXX_BUILD@` this in MiniBoxConfig.h.i
+3. Include `#define XXXX_BUILD @XXXX_BUILD@` this in MiniBoxConfig.h.in
 file which is located in root directory of the repository.
 
 4. Include `option(XXXX "compile XXXX command" ON)` and 
